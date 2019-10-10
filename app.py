@@ -58,12 +58,12 @@ def precipitation():
     
     session = Session(engine)
     
-    # Query all the precipitation data
+
     query_results = session.query(Measurement.date, Measurement.prcp).all()
     
     session.close()
     
-    #Create the dictionary from the precipitation data and append to the list of all precipitation data
+
     precipitation_data = []
     
     for date, prcp in query_results:
@@ -86,7 +86,7 @@ def stations():
     
     session.close()
     
-    #convert list into normal list
+
     all_stations_list = list(np.ravel(all_stations))
     
     return jsonify(all_stations_list)
@@ -99,7 +99,7 @@ def tobs():
     
     session = Session(engine)
 
-# Query for the dates and temperature observations from a year from the last data point
+
     one_year_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
     
     tobs_query = session.query(Measurement.tobs, Measurement.date).\
